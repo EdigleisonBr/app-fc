@@ -19,12 +19,12 @@ class CreateAthletesTable extends Migration
             $table->string('surname');
             $table->string('position');
             $table->date('birthName');
-            $table->string('zipCode');
-            $table->longText('address');
-            $table->integer('number');
-            $table->string('neighborhood');
-            $table->string('city');
-            $table->string('state');
+            $table->string('zipCode')->nullable();
+            $table->longText('address')->nullable();
+            $table->integer('number')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
             $table->integer('shoeSize');
             $table->string('cell');
             $table->boolean('active');

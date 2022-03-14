@@ -17,9 +17,9 @@ class CreateSoccerMatchesTable extends Migration
             $table->id();
             $table->date('matchDate');
             $table->string('hour');
-            $table->foreignId('opposingTeamId')->constrained('opposing_teams');
-            $table->foreignId('refereesId')->constrained('referees');
-            $table->foreignId('placeId')->constrained('places');
+            $table->foreignId('opposingTeamId')->nullable()->constrained('opposing_teams');
+            $table->foreignId('refereesId')->nullable()->constrained('referees');
+            $table->foreignId('placeId')->nullable()->constrained('places');
             $table->integer('goalsAgainst')->nullable();
             $table->integer('goalsInFavor')->nullable();
             $table->foreignId('userId')->constrained('users');
