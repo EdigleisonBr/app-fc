@@ -70,81 +70,80 @@
 
 </form>
 
-@section('scripts')
-    <script type="text/javascript">
 
-        var dataFormatada;
-        var arrayDates = [];
-        var arrayHours = [];
-        var index = 0;
+<script type="text/javascript">
 
-        function checkDate(obj){    
-                        
-            if (arrayDates.length > 0 ){
-                for (var i=0 ; i<arrayDates.length ; i++){
-                    // Usuário não poderá salvar jogo com a mesma data.
-                    if(obj.value == arrayDates[i]){
-                        swal('Atenção!', 'Data de jogo existente!', 'warning');
-                        obj.value = '';
+    var dataFormatada;
+    var arrayDates = [];
+    var arrayHours = [];
+    var index = 0;
+
+    function checkDate(obj){    
+        if (arrayDates.length > 0 ){
+            for (var i=0 ; i<arrayDates.length ; i++){
+                // Usuário não poderá salvar jogo com a mesma data.
+                if(obj.value == arrayDates[i]){
+                    swal('Atenção!', 'Data de jogo existente!', 'warning');
+                    obj.value = '';
+                    obj.focus();
+                }
+                if(obj.value != ''){
+                    // Usuário não poderá salvar mês ou ano diferente em um bloco.
+                    if (obj.value.substring(0,7) != arrayDates[i].substring(0,7) ){
+                        swal('Atenção!', 'Crie apenas jogos do mesmo mês e ano!', 'warning');
                         obj.focus();
-                    }
-                    if(obj.value != ''){
-                        // Usuário não poderá salvar mês ou ano diferente em um bloco.
-                        if (obj.value.substring(0,7) != arrayDates[i].substring(0,7) ){
-                            swal('Atenção!', 'Crie apenas jogos do mesmo mês e ano!', 'warning');
-                            obj.focus();
-                            obj.value = '';
-                        }
+                        obj.value = '';
                     }
                 }
             }
         }
+    }
 
-        function addSchedule() {
-            let hour = $('#hour').val();
-            let date = $('#gameDate').val();
-            
-            if ((date == '') || (hour == '')) {
-                swal('Por favor preencha os campos corretamente!', '', 'error');
-                return false;
-            }
-
-            // Variable created just to show date in conventional format.
-            let dateRow = new Date(date);
-            
-            $('#schedule-body').append(
-                '<tr id="date' + index + '">' +
-                '   <td class="d-none">' + (parseInt(index)+1) + '</td>' +
-                '   <td class="text-center">' + dateRow.toLocaleDateString('pt-BR', {timeZone: 'UTC'}) + '</td>' +
-                '   <td class="text-center">' + hour + '</td>' +
-                '   <td class="text-center">' +
-                '       <i onclick="removeDate(\'' + index + '\')" class="fa fa-times text-danger"></i>' +
-                '   </td>' +
-                '</tr>'
-            );
-         
-
-            arrayHours.push(hour);
-            arrayDates.push(date);
-
-            document.getElementById('arrayDates').value = arrayDates;
-            document.getElementById('arrayHours').value = arrayHours;    
-
-            index++;
-
-            document.getElementById('gameDate').value = '';
-            document.getElementById('hour').value = '';
+    function addSchedule() {
+        let hour = $('#hour').val();
+        let date = $('#gameDate').val();
+        
+        if ((date == '') || (hour == '')) {
+            swal('Por favor preencha os campos corretamente!', '', 'error');
+            return false;
         }
 
-        function removeDate (index) {
-            $('#date' + index).remove();
-            arrayHours.splice(index, 1);
-            arrayDates.splice(index, 1);
+        // Variable created just to show date in conventional format.
+        let dateRow = new Date(date);
+        
+        $('#schedule-body').append(
+            '<tr id="date' + index + '">' +
+            '   <td class="d-none">' + (parseInt(index)+1) + '</td>' +
+            '   <td class="text-center">' + dateRow.toLocaleDateString('pt-BR', {timeZone: 'UTC'}) + '</td>' +
+            '   <td class="text-center">' + hour + '</td>' +
+            '   <td class="text-center">' +
+            '       <i onclick="removeDate(\'' + index + '\')" class="fa fa-times text-danger"></i>' +
+            '   </td>' +
+            '</tr>'
+        );
+        
 
-            document.getElementById('arrayHours').value = arrayHours;
-            document.getElementById('arrayDates').value = arrayDates;  
-        }
-    </script>
-@stop
+        arrayHours.push(hour);
+        arrayDates.push(date);
+
+        document.getElementById('arrayDates').value = arrayDates;
+        document.getElementById('arrayHours').value = arrayHours;    
+
+        index++;
+
+        document.getElementById('gameDate').value = '';
+        document.getElementById('hour').value = '';
+    }
+
+    function removeDate (index) {
+        $('#date' + index).remove();
+        arrayHours.splice(index, 1);
+        arrayDates.splice(index, 1);
+
+        document.getElementById('arrayHours').value = arrayHours;
+        document.getElementById('arrayDates').value = arrayDates;  
+    }
+</script>
+
 
 

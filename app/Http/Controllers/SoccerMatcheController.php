@@ -184,6 +184,8 @@ class SoccerMatcheController extends Controller
     }
 
     public function goals(Request $req){
+        $user = auth()->user();
+
         $id = $req->soccerMatchId;
         $arrayA = explode(',', $req->arrayA);
         $arrayG = explode(',', $req->arrayG);
@@ -192,8 +194,8 @@ class SoccerMatcheController extends Controller
         
         // Salvando os gols feitos por cada jogados no jogo na tabela GoalsAthletes
         for ($i = 0 ; $i < $countArrays ; $i++){
-            
             $input = New GoalsAthletes;
+            $input->userId = $user->id;
             $input->soccerMatchId = $id;
             $input->athleteId = $arrayA[$i];
             $input->goals = $arrayG[$i];

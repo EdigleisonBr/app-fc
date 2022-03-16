@@ -31,7 +31,7 @@
                                         <div class="input-group-text bg-danger"><i class="text-white fas fa-times-circle"></i></div>
                                     </div>
                                     @if (isset($soccerMatche->goalsAgainst))
-                                        <input type="number" name="goalsAgainst" class="form-control" value={{$soccerMatche->goalsAgainst}} placeholder="Gols contra">
+                                        <input type="number" name="goalsAgainst" class="form-control" value={{$soccerMatche->goalsAgainst}} placeholder="Gols contra" min=0>
                                     @else
                                         <input type="number" name="goalsAgainst" class="form-control" placeholder="Gols contra" min=0>
                                     @endif
