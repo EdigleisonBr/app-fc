@@ -13,8 +13,8 @@ class TeamController extends Controller
 {
     public function index(){
         
-        $teams = Team::all();
-               
+        $teams = DB::table('opposing_teams')->orderBy('name')->get();
+                       
         return view('teams.index', compact('teams'));
     }
 
