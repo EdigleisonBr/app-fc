@@ -29,7 +29,8 @@
                                 <span class="input-group-text bg-dark"><i class="text-white far fa-flag"></i></span>
                             </div>
                             <?php
-                            $teams = \App\Models\Team::all();
+                                $teams = Illuminate\Support\Facades\DB::table('opposing_teams')->orderBy('name')->get();
+                                // $teams = \App\Models\Team::all();
                             ?>
                             <select name="opposingTeamId" id="opposingTeamId" class="form-control">
                                 @if($soccerMatche->opposingTeamId)

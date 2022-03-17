@@ -24,7 +24,7 @@
                             <input type="hidden" name="soccerMatchId" id="soccerMatchId" value={{$soccerMatche->id}}>
                             
                             @php
-                                $athletes = \App\Models\Athlete::all();
+                                $athletes = \App\Models\Athlete::where('active', 1)->orderBy('name')->get();
                             @endphp
                             
                             {{-- @php
