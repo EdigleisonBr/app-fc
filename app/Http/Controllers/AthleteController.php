@@ -119,7 +119,6 @@ class AthleteController extends Controller
     }
 
     public function destroy($id) {
-           
         Athlete::findOrFail($id)->delete();
         $user = auth()->user();
         toast('Cadastro excluido com sucesso!','success');

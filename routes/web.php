@@ -86,6 +86,7 @@ Route::get('/edit/{id}', [SoccerMatcheController::class, 'edit'])->middleware('a
 // Salva os gols que o time levou
 Route::get('/goalsAgainst', [SoccerMatcheController::class, 'goalsAgainst'])->middleware('auth');
 Route::get('soccerMatches/goals', [SoccerMatcheController::class, 'goals'])->middleware('auth');
+Route::get('soccerMatches/delete/{id}', [SoccerMatcheController::class, 'destroy'])->middleware('auth');
 
 
 Route::post('/goals', [GoalsAthleteController::class, 'store'])->middleware('auth');

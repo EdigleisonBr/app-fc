@@ -3,7 +3,7 @@
 
 @section('content')
 
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
 
     <div class="col-md-12">
         <div class="d-flex justify-content-between">
@@ -73,13 +73,15 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-header text-center p-2 bg-ligth text-white rounded-bottom">
-                                <a href="/edit/{{$soccerMatche->id}}"style="text-decoration: none;"><i class="fas fa-edit text-warning"></i>&nbsp;&nbsp;</a>
-                                <a class="btn btn-light btn-sm rounded-circle" href="#" data-toggle="modal" data-target="#modalShow{{$soccerMatche->id}}"><i class="fas fa-futbol text-success"></i></a>
+                            <div class="card-header text-center p-2 bg-ligth text-white rounded-bottom d-flex justify-content-center">
+                                <button class="btn"><a href="/edit/{{$soccerMatche->id}}"style="text-decoration: none;"><i class="fas fa-edit text-warning"></i></a></button>
+                                <button class="btn"><a class="btn btn-light btn-sm rounded-circle" href="#" data-toggle="modal" data-target="#modalShow{{$soccerMatche->id}}"><i class="fas fa-futbol text-success"></i></a></button>
+                                <button class="btn"><a class="btn btn-light btn-sm rounded-circle" href="#" data-toggle="modal" data-target="#modalQuestionDelete{{$soccerMatche->id}}"><i class="fas fa-trash-alt text-danger"></i></a></button>
                             </div>
                         </div>
                     @endif
                     @include('modals.modalShow') 
+                    @include('modals.modalQuestionDelete') 
                 @endforeach
                 <br>
             @endfor
@@ -92,9 +94,9 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
-     </script>
-@stop
+    
+@endsection
+
 
 
 

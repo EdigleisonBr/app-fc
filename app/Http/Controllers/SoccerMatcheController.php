@@ -29,7 +29,7 @@ class SoccerMatcheController extends Controller
 
         $monthYear = $m1 ." / ". $y;
 
-        $soccerMatches = SoccerMatche::whereYear('matchDate', $y)->orderBy('id', 'asc')->get();
+        $soccerMatches = SoccerMatche::whereYear('matchDate', $y)->orderBy('matchDate', 'asc')->get();
         
         return view('soccerMatches.index', ['monthYear' => $monthYear, 'soccerMatches' => $soccerMatches, 'm' => $m, 'y' => $y]);
     }
@@ -204,6 +204,20 @@ class SoccerMatcheController extends Controller
       
         toast('Cadastro realizado com sucesso!','success');
         return redirect('/edit/'.$req->soccerMatchId);
+    }
+
+    public function destroy($id) {
+        $user = auth()->user();
+
+        GoalsAthletes::where('soccerMatchId',$id)->delete();
+
+        SoccerMatche::findOrFail($id)->delete();
+        
+        $y = date('Y');
+        $soccerMatches = SoccerMatche::whereYear('matchDate', $y)->orderBy('matchDate', 'asc')->get();
+
+        toast('Jogo excluido com sucesso!', 'success');
+        return view('soccerMatches.index', ['soccerMatches' => $soccerMatches]);
     }
  
 }
