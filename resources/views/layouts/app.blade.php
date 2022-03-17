@@ -29,12 +29,18 @@
             </a>
             <ul class="navbar-nav px-3 d-inline-block">
                 @auth
-                    <li class="nav-item text-nowrap d-inline-block mr-3">
+                    <li class="nav-item text-nowrap d-inline-block mr-4">
+                        <i class="fas fa-user-check text-success"></i>
+                        {{ Auth::user()->name }}
+                    </li>
+                    <li class="nav-item text-nowrap d-inline-block mr-4">
                         <form action="/logout" method="POST">
                             @csrf
-                            <a href="/logout"
-                            class="nav-link text-dark"
-                            onclick="event.preventDefault(); this.closest('form').submit();">
+                            <a 
+                                route="/logout"
+                                class="nav-link text-dark"
+                                onclick="event.preventDefault(); this.closest('form').submit();"
+                            >
                             <span data-feather="log-out" ></span>
                             Sair
                             </a>
