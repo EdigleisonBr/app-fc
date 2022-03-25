@@ -29,32 +29,40 @@
             </a>
             <ul class="navbar-nav px-3 d-inline-block">
                 @auth
-                    <li class="nav-item text-nowrap d-inline-block mr-4">
-                        <i class="fas fa-user-check text-success"></i>
+                    <li class="nav-item text-nowrap d-inline-block mr-4 ">
+                        <i class="fas fa-eye text-success"></i>
                         {{ Auth::user()->name }}
                     </li>
                     <li class="nav-item text-nowrap d-inline-block mr-4">
                         <form action="/logout" method="POST">
                             @csrf
                             <a 
-                                route="/logout"
+                                href="/logout"
                                 class="nav-link text-dark"
                                 onclick="event.preventDefault(); this.closest('form').submit();"
                             >
-                            <span data-feather="log-out" ></span>
+                            <i class="fas fa-sign-out-alt"></i>
                             Sair
                             </a>
                         </form>
                     </li>
                 @endauth
                 @guest
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link text-dark mr-4">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar
+                        </a>
+                    </li>
+                @endguest
+                {{-- @guest
                     <li class="nav-item d-inline-block">
                         <a href="/login" class="nav-link text-dark">Entrar</a>
                     </li>
                     <li class="nav-item  d-inline-block">
                         <a href="/register" class="nav-link ml-3 mr-5 text-dark">Cadastrar</a>
                     </li>
-                @endguest
+                @endguest --}}
             </ul> 
         </nav> 
        

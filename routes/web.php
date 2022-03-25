@@ -27,10 +27,15 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\GoalsAthleteController;
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('layouts.dashboard');
+    return view('dashboard');
 })->name('dashboard');
 
+Route::get('/', function () {
+    return view('layouts.app');
+});
+
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
+
 
 Route::get('/athletes/create', [AthleteController::class, 'create'])->middleware('auth');
 Route::post('/athletes', [AthleteController::class, 'store'])->middleware('auth');
