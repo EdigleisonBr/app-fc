@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('/dashboard');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
