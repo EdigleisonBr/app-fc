@@ -18,26 +18,26 @@ class AthleteTableSeeder extends Seeder
     {
         \App\Models\Athlete::insert(
             [
-                // [
-                //     'name' => 'Rafael Ezequiel',
-                //     'surname' => 'Rafael',
-                //     'position' => 'Goleiro',
-                //     'birthName' => '1987-04-19',
-                //     'shoeSize' => 39,
-                //     'cell' => '16994376611',
-                //     'active' => 1,
-                //     'userId' => 1,
-                // ],
-                // [
-                //     'name' => 'Rener',
-                //     'surname' => 'Renin',
-                //     'position' => 'Goleiro',
-                //     'birthName' => '1989-07-07',
-                //     'shoeSize' => 39,
-                //     'cell' => '16994231391',
-                //     'active' => 1,
-                //     'userId' => 1,
-                // ],
+                [
+                    'name' => 'Rafael Ezequiel',
+                    'surname' => 'Rafael',
+                    'position' => 'Goleiro',
+                    'birthName' => '1987-04-19',
+                    'shoeSize' => 39,
+                    'cell' => '16994376611',
+                    'active' => 1,
+                    'userId' => 1,
+                ],
+                [
+                    'name' => 'Rener',
+                    'surname' => 'Renin',
+                    'position' => 'Goleiro',
+                    'birthName' => '1989-07-07',
+                    'shoeSize' => 39,
+                    'cell' => '16994231391',
+                    'active' => 1,
+                    'userId' => 1,
+                ],
                 [ 
                     'name' => 'Everton Teixeira',
                     'surname' => 'Tim',
